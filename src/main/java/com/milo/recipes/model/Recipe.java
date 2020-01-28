@@ -130,8 +130,19 @@ public class Recipe {
         return notes;
     }
 
+    //pro-tip#1 cuando cambiamos las notas de la receta, actualizamos de una vez la receta de las notas
+    //esto evitara doble trabajo en las capas superiores
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
+    }
+
+    //pro-tip#2 cuando agregamos un ingrediente a la receta, le agregamos la receta al ingrediente tambien.
+    //esto evitara doble trabajo en las capas superiores
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Category> getCategories() {
