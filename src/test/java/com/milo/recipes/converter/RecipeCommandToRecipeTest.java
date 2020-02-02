@@ -27,7 +27,7 @@ public class RecipeCommandToRecipeTest {
     public static final Long INGRED_ID_2 = 4L;
     public static final Long NOTES_ID = 9L;
 
-    RecipeCommandToRecipe converter;
+    private RecipeCommandToRecipe converter;
 
 
     @Before
@@ -44,7 +44,10 @@ public class RecipeCommandToRecipeTest {
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new RecipeCommand()));
+        RecipeCommand recipeCommand = new RecipeCommand();
+        NotesCommand notesCommand = new NotesCommand();
+        recipeCommand.setNotes(notesCommand);
+        assertNotNull(converter.convert(recipeCommand));
     }
 
     @Test
