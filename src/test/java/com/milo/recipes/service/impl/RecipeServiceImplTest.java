@@ -1,5 +1,7 @@
 package com.milo.recipes.service.impl;
 
+import com.milo.recipes.converter.RecipeCommandToRecipe;
+import com.milo.recipes.converter.RecipeToRecipeCommand;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.repository.RecipeRepository;
 import org.junit.Before;
@@ -23,6 +25,12 @@ public class RecipeServiceImplTest {
     @Mock
     private RecipeRepository recipeRepository;
 
+    @Mock
+    private RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    private RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         // inicializar los Mocks
@@ -30,7 +38,7 @@ public class RecipeServiceImplTest {
         MockitoAnnotations.initMocks(this);
 
         // inicializar nuetro RecipeService
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -52,4 +60,5 @@ public class RecipeServiceImplTest {
         //verificamos la interaccion, queremos verificar que el findAll sea llamado una sola vez desde el repository
         verify(recipeRepository, times(1)).findAll();
     }
+
 }

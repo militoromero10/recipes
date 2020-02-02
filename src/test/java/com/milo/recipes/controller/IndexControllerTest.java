@@ -1,4 +1,4 @@
-package com.milo.recipes.controllers;
+package com.milo.recipes.controller;
 
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.service.RecipeService;
@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
