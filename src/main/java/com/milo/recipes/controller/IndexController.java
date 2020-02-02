@@ -1,4 +1,4 @@
-package com.milo.recipes.controllers;
+package com.milo.recipes.controller;
 
 import com.milo.recipes.service.RecipeService;
 import lombok.extern.slf4j.Slf4j;

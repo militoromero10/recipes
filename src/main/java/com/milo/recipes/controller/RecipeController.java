@@ -1,4 +1,4 @@
-package com.milo.recipes.controllers;
+package com.milo.recipes.controller;
 
 import com.milo.recipes.service.RecipeService;
 import org.springframework.stereotype.Controller;

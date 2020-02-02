@@ -1,5 +1,7 @@
 package com.milo.recipes.service.impl;
 
+import com.milo.recipes.converter.RecipeCommandToRecipe;
+import com.milo.recipes.converter.RecipeToRecipeCommand;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.repository.RecipeRepository;
 import org.junit.Before;
@@ -25,6 +27,11 @@ public class RecipeServiceImplTest {
     @Mock
     private RecipeRepository recipeRepository;
 
+    @Mock
+    private RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    private RecipeCommandToRecipe recipeCommandToRecipe;
     private Recipe recipe;
 
     @Before
@@ -35,7 +42,7 @@ public class RecipeServiceImplTest {
         recipe = new Recipe();
         recipe.setId(ID);
         // inicializar nuetro RecipeService
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -68,5 +75,4 @@ public class RecipeServiceImplTest {
         verify(recipeRepository,times(1)).findById(any());
         verify(recipeRepository,never()).findAll();
     }
-
 }

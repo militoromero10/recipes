@@ -1,4 +1,4 @@
-package com.milo.recipes.controllers;
+package com.milo.recipes.controller;
 
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.service.RecipeService;
@@ -9,9 +9,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
