@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -18,17 +19,21 @@ import static org.mockito.Mockito.*;
  */
 public class RecipeServiceImplTest {
 
+    public static final Long ID = 1L;
     private RecipeServiceImpl recipeService;
 
     @Mock
     private RecipeRepository recipeRepository;
+
+    private Recipe recipe;
 
     @Before
     public void setUp() throws Exception {
         // inicializar los Mocks
         // Esto inicializara las dependencias que necesitemos en este caso el Repository
         MockitoAnnotations.initMocks(this);
-
+        recipe = new Recipe();
+        recipe.setId(ID);
         // inicializar nuetro RecipeService
         recipeService = new RecipeServiceImpl(recipeRepository);
     }
@@ -36,7 +41,7 @@ public class RecipeServiceImplTest {
     @Test
     public void getRecipes() {
         //given, lo que queremos retornar cuando llamemos al repository
-        Recipe recipe = new Recipe();
+
         HashSet<Recipe> recipesData = new HashSet();
         recipesData.add(recipe);
 
@@ -52,4 +57,16 @@ public class RecipeServiceImplTest {
         //verificamos la interaccion, queremos verificar que el findAll sea llamado una sola vez desde el repository
         verify(recipeRepository, times(1)).findAll();
     }
+
+    @Test
+    public void getRecipeById(){
+        when(recipeRepository.findById(any())).thenReturn(Optional.of(recipe));
+
+        Recipe recipe = recipeService.getRecipeById(ID);
+        assertNotNull("Null recipe returned",recipe);
+        assertEquals(ID, recipe.getId());
+        verify(recipeRepository,times(1)).findById(any());
+        verify(recipeRepository,never()).findAll();
+    }
+
 }
