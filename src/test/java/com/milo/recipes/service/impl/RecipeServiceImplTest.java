@@ -1,5 +1,6 @@
 package com.milo.recipes.service.impl;
 
+import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.converter.RecipeCommandToRecipe;
 import com.milo.recipes.converter.RecipeToRecipeCommand;
 import com.milo.recipes.model.Recipe;
@@ -76,6 +77,26 @@ public class RecipeServiceImplTest {
         verify(recipeRepository,never()).findAll();
     }
 
+    @Test
+    public void getRecipeCommandByIdTest() throws Exception {
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(ID);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand commandById = recipeService.findCommandById(ID);
+
+        assertNotNull("Null recipe returned", commandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+    }
+
+
+    @Test
     public void testDeleteById() throws Exception {
         //given
         Long idDelete = Long.parseLong("2");
