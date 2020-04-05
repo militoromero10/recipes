@@ -47,16 +47,16 @@ public class IngredientServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-
-        ingredientService = new IngredientServiceImpl(recipeRepository, unitOfMeasureRepository, ingredientToIngredientCommand, ingredientCommandToIngredient);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient, recipeRepository, unitOfMeasureRepository);
     }
 
     @Test
     public void findByRecipeIdAndId() throws Exception {
+
     }
 
     @Test
-    public void findByRecipeIdAndRecipeIdHappyPath() throws Exception {
+    public void findByRecipeIdAndIdHappyPath() throws Exception {
         //given
         Recipe recipe = new Recipe();
         recipe.setId(1L);
@@ -65,8 +65,7 @@ public class IngredientServiceImplTest {
         ingredient1.setId(1L);
 
         Ingredient ingredient2 = new Ingredient();
-        ingredient2.setId(1L);
-
+        ingredient2.setId(2L);
         Ingredient ingredient3 = new Ingredient();
         ingredient3.setId(3L);
 
