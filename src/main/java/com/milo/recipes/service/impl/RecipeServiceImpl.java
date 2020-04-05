@@ -29,7 +29,6 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Set<Recipe> getRecipes() {
-        log.debug("I'm in the service");
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
@@ -47,5 +46,16 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        recipeRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand findCommandById(Long id) {
+        return recipeToRecipeCommand.convert(getRecipeById(id));
     }
 }
