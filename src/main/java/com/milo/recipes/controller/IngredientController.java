@@ -1,6 +1,8 @@
 package com.milo.recipes.controller;
 
 import com.milo.recipes.command.IngredientCommand;
+import com.milo.recipes.command.RecipeCommand;
+import com.milo.recipes.command.UnitOfMeasureCommand;
 import com.milo.recipes.service.IngredientService;
 import com.milo.recipes.service.RecipeService;
 import com.milo.recipes.service.UnitOfMeasureService;
@@ -38,6 +40,21 @@ public class IngredientController {
                                        @PathVariable String id, Model model){
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.parseLong(recipeId), Long.parseLong(id)));
         return "recipe/ingredient/show";
+    }
+
+    @GetMapping
+    @RequestMapping({"recipe/{recipeId}/ingredient/new"})
+    public String newRecipe(@PathVariable String recipeId, Model model){
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.parseLong(recipeId));
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.parseLong(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUnitOfMeasure(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping
