@@ -3,6 +3,7 @@ package com.milo.recipes.service.impl;
 import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.converter.RecipeCommandToRecipe;
 import com.milo.recipes.converter.RecipeToRecipeCommand;
+import com.milo.recipes.exceptions.NotFoundException;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.repository.RecipeRepository;
 import org.junit.Before;
@@ -64,6 +65,13 @@ public class RecipeServiceImplTest {
 
         //verificamos la interaccion, queremos verificar que el findAll sea llamado una sola vez desde el repository
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception {
+        Optional<Recipe> recipeOptional = Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+        Recipe recipeReturned = recipeService.getRecipeById(1L);
     }
 
     @Test

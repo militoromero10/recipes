@@ -3,6 +3,7 @@ package com.milo.recipes.service.impl;
 import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.converter.RecipeCommandToRecipe;
 import com.milo.recipes.converter.RecipeToRecipeCommand;
+import com.milo.recipes.exceptions.NotFoundException;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.repository.RecipeRepository;
 import com.milo.recipes.service.RecipeService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -36,7 +38,11 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe getRecipeById(Long id) {
-        return recipeRepository.findById(id).orElse(null);
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+        if(!recipeOptional.isPresent()){
+            throw new NotFoundException("Recipe not found! for ID value: "+id);
+        }
+        return recipeOptional.get();
     }
 
     @Transactional //porque haremos conversion fuera del contexto spring
