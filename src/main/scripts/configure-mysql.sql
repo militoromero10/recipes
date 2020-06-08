@@ -21,6 +21,9 @@ GRANT DELETE ON sfg_prod.* to 'sfg_prod_user'@'localhost';
 GRANT UPDATE ON sfg_prod.* to 'sfg_prod_user'@'localhost';
 
 ## para docker
+CREATE USER 'sfg_dev_user'@'%' IDENTIFIED BY 'guru';
+CREATE USER 'sfg_prod_user'@'%' IDENTIFIED BY 'guru';
+
 GRANT SELECT ON sfg_dev.* to 'sfg_dev_user'@'%';
 GRANT INSERT ON sfg_dev.* to 'sfg_dev_user'@'%';
 GRANT DELETE ON sfg_dev.* to 'sfg_dev_user'@'%';
