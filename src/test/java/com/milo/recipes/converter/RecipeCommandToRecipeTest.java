@@ -6,10 +6,10 @@ import com.milo.recipes.command.NotesCommand;
 import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.model.Difficulty;
 import com.milo.recipes.model.Recipe;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RecipeCommandToRecipeTest {
     public static final Long RECIPE_ID = 1L;
@@ -30,7 +30,7 @@ public class RecipeCommandToRecipeTest {
     private RecipeCommandToRecipe converter;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
                 new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),

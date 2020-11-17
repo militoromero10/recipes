@@ -1,30 +1,30 @@
 package com.milo.recipes.repository;
 
 import com.milo.recipes.model.UnitOfMeasure;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Spring integration test
  */
 
-@RunWith(SpringRunner.class) // spring test, levanta el context y tendremos accesos al UoM repository
+@ExtendWith(SpringExtension.class)
 @DataJpaTest //mockea la base de datos
 public class UnitOfMeasureRepositoryIT {
 
     @Autowired
     private UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
     }

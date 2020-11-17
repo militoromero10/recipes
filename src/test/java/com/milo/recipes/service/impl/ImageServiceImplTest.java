@@ -3,8 +3,8 @@ package com.milo.recipes.service.impl;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.repository.RecipeRepository;
 import com.milo.recipes.service.ImageService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -25,7 +25,7 @@ public class ImageServiceImplTest {
 
     ImageService imageService;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 

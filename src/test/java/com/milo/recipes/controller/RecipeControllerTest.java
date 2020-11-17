@@ -4,8 +4,8 @@ import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.exceptions.NotFoundException;
 import com.milo.recipes.model.Recipe;
 import com.milo.recipes.service.RecipeService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
@@ -31,7 +31,7 @@ public class RecipeControllerTest {
 
     private MockMvc mockMvc;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         recipeController = new RecipeController(recipeService);

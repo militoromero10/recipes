@@ -5,8 +5,8 @@ import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.service.IngredientService;
 import com.milo.recipes.service.RecipeService;
 import com.milo.recipes.service.UnitOfMeasureService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
@@ -36,7 +36,7 @@ public class IngredientControllerTest {
 
     private MockMvc mockMvc;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         ingredientController = new IngredientController(recipeService, ingredientService, unitOfMeasureService);

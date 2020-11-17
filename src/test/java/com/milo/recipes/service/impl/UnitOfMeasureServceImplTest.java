@@ -5,8 +5,8 @@ import com.milo.recipes.converter.UnitOfMeasureToUnitOfMeasureCommand;
 import com.milo.recipes.model.UnitOfMeasure;
 import com.milo.recipes.repository.UnitOfMeasureRepository;
 import com.milo.recipes.service.UnitOfMeasureService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -24,7 +24,7 @@ public class UnitOfMeasureServceImplTest {
     @Mock
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         unitOfMeasureService = new UnitOfMeasureServiceImpl(unitOfMeasureRepository, unitOfMeasureToUnitOfMeasureCommand);

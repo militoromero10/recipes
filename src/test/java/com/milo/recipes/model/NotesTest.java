@@ -8,22 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Prueba unitaria
  */
-public class CategoryTest {
+public class NotesTest {
 
-    private Category category;
 
-    /** configuracion para antes de que corran las pruebas unitarias*/
     @BeforeEach
     public void setUp(){
-        category = new Category();
+
     }
 
 
     @Test
     public void getId() throws Exception {
-        Long id = 4L;
-        category.setId(id);
-        assertEquals(id, category.getId());
+        assertEquals(3, 3);
     }
 
     @Test

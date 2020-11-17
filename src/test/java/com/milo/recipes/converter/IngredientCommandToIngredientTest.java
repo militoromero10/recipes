@@ -4,12 +4,12 @@ import com.milo.recipes.command.IngredientCommand;
 import com.milo.recipes.command.UnitOfMeasureCommand;
 import com.milo.recipes.model.Ingredient;
 import com.milo.recipes.model.Recipe;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IngredientCommandToIngredientTest {
 
@@ -21,7 +21,7 @@ public class IngredientCommandToIngredientTest {
 
     IngredientCommandToIngredient converter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         converter = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }

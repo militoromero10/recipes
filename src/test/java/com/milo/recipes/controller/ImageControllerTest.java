@@ -3,8 +3,8 @@ package com.milo.recipes.controller;
 import com.milo.recipes.command.RecipeCommand;
 import com.milo.recipes.service.ImageService;
 import com.milo.recipes.service.RecipeService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -30,7 +30,7 @@ public class ImageControllerTest {
 
     MockMvc mockMvc;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new ImageController(imageService, recipeService);

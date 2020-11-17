@@ -2,17 +2,17 @@ package com.milo.recipes.converter;
 
 import com.milo.recipes.command.CategoryCommand;
 import com.milo.recipes.model.Category;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CategoryToCategoryCommandTest {
     public static final Long ID_VALUE = new Long(1L);
     public static final String DESCRIPTION = "descript";
     CategoryToCategoryCommand convter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         convter = new CategoryToCategoryCommand();
     }
